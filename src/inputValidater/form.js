@@ -10,7 +10,7 @@ const InputForm = () => {
     hasError: firstNameHasError,
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
-    reset: resetFirstName
+    reset: resetFirstName,
   } = useInput(isNotEmpty);
   const {
     value: lastNameValue,
@@ -18,7 +18,7 @@ const InputForm = () => {
     hasError: lastNameHasError,
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
-    reset: resetLastName
+    reset: resetLastName,
   } = useInput(isNotEmpty);
   const {
     value: emailValue,
@@ -26,7 +26,7 @@ const InputForm = () => {
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmail
+    reset: resetEmail,
   } = useInput(isEmail);
 
   let formIsValid = false;
@@ -55,7 +55,10 @@ const InputForm = () => {
   const emailClasses = emailHasError ? "invalid" : "";
 
   const btnMove = () => {
-    document.getElementById("move");
+    let move = document.getElementById("move");
+    let position = position ? (position = 0) : (position = 150);
+    move.style.transform = translate(position + "px");
+    // move.style.animation = 'easy '
   };
   return (
     <form onSubmit={submitHandler}>
